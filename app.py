@@ -5,23 +5,23 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-@app.route('/load1', methods=('GET', 'POST'))
-def load1():
+@app.route('/load_zadanie_1', methods=('GET', 'POST'))
+def load_zadanie_1():
     return render_template('1.html')
 
 
-@app.route('/test1', methods=('GET', 'POST'))
-def test1():
+@app.route('/zadanie_1', methods=('GET', 'POST'))
+def zadanie_1():
     return 'You sent : {}'.format(request.form['1'])
 
 
-@app.route('/load2', methods=('GET', 'POST'))
-def load2():
+@app.route('/load_zadanie_2', methods=('GET', 'POST'))
+def load_zadanie_2():
     return render_template('2.html')
 
 
-@app.route("/test2", methods=('GET', 'POST'))
-def calculate():
+@app.route("/zadanie_2", methods=('GET', 'POST'))
+def zadanie_2():
     x = int(request.form['2_1'])
     y = int(request.form['2_2'])
     mode = request.form['mode']
@@ -42,19 +42,19 @@ def calculate():
         return 'Result : ' + str(cases[mode](x, y))
 
 
-@app.route('/load3', methods=('GET', 'POST'))
-def load3():
+@app.route('/load_zadanie_3', methods=('GET', 'POST'))
+def load_zadanie_3():
     return render_template('3.html')
 
 
-@app.route("/test3", methods=('GET', 'POST'))
-def login_page():
+@app.route("/zadanie_3", methods=('GET', 'POST'))
+def zadanie_3():
     login = "admin"
     password = "admin"
     login_session = request.form['3_1']
     password_session = request.form['3_2']
     if login == login_session and password_session == password:
-        return load2()
+        return load_zadanie_2()
     else:
         return render_template('3.html', value=login_session) + "<strong>Złe hasło</strong>"
 
